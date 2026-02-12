@@ -7,7 +7,7 @@ A full-stack MERN (MongoDB, Express, React, Node.js) application for managing a 
 ## 🔗 Live Deployment Links
 
 - **Frontend Application:** [https://Supriya5645.github.io/book-library-app](https://Supriya5645.github.io/book-library-app)
-- **Backend API:** [https://book-library-backend-o8dd.onrender.com/api](https://book-library-backend-o8dd.onrender.com/api)
+- **Backend API:** [https://book-library-backend-o8dd.onrender.com](https://book-library-backend-o8dd.onrender.com/)
 - **GitHub Repository:** [https://github.com/supriya5645/book-library-app/tree/book_app](https://github.com/supriya5645/book-library-app/tree/book_app)
 
 ---
