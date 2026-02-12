@@ -129,9 +129,8 @@ The application will automatically
 book-library-app/
 ├── backend/
 │  Project Structure
-
 ```
-
+```
 book-library-app/
 ├── backend/
 │ ├── config/
@@ -176,7 +175,7 @@ book-library-app/
 │ └── README.md
 │
 └── README.md # Project documentationpoints
-
+```
 ### Authentication Routes
 
 - `API Endpoints
