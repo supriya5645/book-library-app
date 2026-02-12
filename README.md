@@ -1,6 +1,4 @@
-# book-library-app
-
-
+# Book Library App
 
 A full-stack web application for managing a personal book library. Users can register, log in, create, read, update, and delete books from their collection.
 
@@ -70,9 +68,9 @@ Create a `.env` file in the `backend` directory and configure your environment v
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/book-library
-JWT_SECRET=your_secret_key_here
-NODE_ENV=development
+MONGO_URI=mongodb+srv://supriyasupriya5645:Supriya123@cluster0.5gd4cam.mongodb.net/bookapp?retryWrites=true&w=majority
+JWT_SECRET=supersecretkey
+
 ```
 
 ### 3. Set Up the Frontend
@@ -100,7 +98,7 @@ Configure the API endpoint in `src/api/axios.js` to match your backend URL (defa
 From the `backend` directory:
 
 ```bash
-npm start
+npm run dev
 ```
 
 The server will run on `http://localhost:5000`
