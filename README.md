@@ -1,92 +1,99 @@
 # Book Library App
 
-A full-stack web application for managing a personal book library. Users can register, log in, create, read, update, and delete books from their collection.
-
-**Repository:** https://github.com/supriya5645/book-library-app/tree/book_app
+A full-stack MERN (MongoDB, Express, React, Node.js) application for managing a personal book library. Users can securely register, log in, and manage their personalized book collection with full CRUD functionality.
 
 ---
 
-## 🚀 Features
+## 🔗 Live Deployment Links
 
-- **User Authentication:** Secure registration and login functionality
+- **Frontend Application:** [https://Supriya5645.github.io/book-library-app](https://Supriya5645.github.io/book-library-app)
+- **Backend API:** [Render Deployment URL]
+- **GitHub Repository:** [https://github.com/supriya5645/book-library-app/tree/book_app](https://github.com/supriya5645/book-library-app/tree/book_app)
+
+---
+
+## Features
+
+- **User Authentication:** Secure JWT-based registration and login system
 - **Book Management:** Create, read, update, and delete books in your library
-- **User-Specific Collections:** Each user has their own personalized book collection
-- **Responsive Design:** Clean and user-friendly interface
+- **User-Specific Collections:** Each user has their own personalized, private book collection
+- **Responsive Design:** Bootstrap-powered responsive interface
+- **Client-side Routing:** Seamless navigation using React Router
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 **Backend:**
 
-- Node.js
-- Express.js
-- MongoDB (or your database of choice)
+- Node.js with Express.js v5.2.1
+- MongoDB Atlas (Cloud Database)
+- JWT Authentication with bcryptjs for secure password hashing
+- Express Validator for input validation
 
 **Frontend:**
 
-- React.js
-- Axios (for HTTP requests)
-- CSS
+- React.js v19.2.4 with React Router v7.13.0
+- Bootstrap v5.3.8 for responsive styling
+- Axios for HTTP client communication
+- Context API for state management
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
-Before you begin, ensure you have the following installed on your machine:
+Before setting up locally, ensure you have the following:
 
 - **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
 - **npm** (comes with Node.js)
-- **MongoDB** (if using MongoDB locally) - [Download here](https://www.mongodb.com/try/download/community)
+- **MongoDB Atlas Account** (for cloud database) - [Sign up here](https://www.mongodb.com/cloud/atlas)
+- **Git** for version control
 
 ---
 
-## 📦 Installation
+Installation
 
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/supriya5645/book-library-app.git
 cd book-library-app
+git checkout book_app
 ```
 
-### 2. Set Up the Backend
+### 2. Backend Setup
 
 Navigate to the backend directory:
 
 ```bash
 cd backend
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create a `.env` file in the `backend` directory and configure your environment variables:
+Create a `.env` file in the `backend` directory:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb+srv://supriyasupriya5645:Supriya123@cluster0.5gd4cam.mongodb.net/bookapp?retryWrites=true&w=majority
-JWT_SECRET=supersecretkey
-
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/bookapp?retryWrites=true&w=majority
+JWT_SECRET=your_jwt_secret_key_here
 ```
 
-### 3. Set Up the Frontend
+**Environment Variables Explanation:**
+
+- `PORT` - Server port (default: 5000)
+- `MONGO_URI` - MongoDB Atlas connection string
+- `JWT_SECRET` - Secret key for JWT token signing (use a strong, random string)
+
+### 3. Frontend Setup
 
 Navigate to the frontend directory (from the root):
 
 ```bash
-cd frontend
-```
-
-Install dependencies:
-
-```bash
+cd ../frontend
 npm install
 ```
 
+The API endpoint is configured in [src/api/axios.js](src/api/axios.js) to communicate with the backend (default:
 Configure the API endpoint in `src/api/axios.js` to match your backend URL (default is `http://localhost:5000`).
 
 ---
@@ -96,113 +103,233 @@ Configure the API endpoint in `src/api/axios.js` to match your backend URL (defa
 ### Start the Backend Server
 
 From the `backend` directory:
+Running the Application Locally
+
+### Start the Backend Server
+
+From the `backend` directory:
 
 ```bash
 npm run dev
 ```
 
-The server will run on `http://localhost:5000`
+The backend API will run on `http://localhost:5000`
 
 ### Start the Frontend Development Server
 
-From the `frontend` directory (in a new terminal):
+From the `frontend` directory (open a new terminal):
 
 ```bash
 npm start
 ```
 
-The application will open in your browser at `http://localhost:3000`
-
----
-
-## 📁 Project Structure
+The application will automatically
 
 ```
 book-library-app/
 ├── backend/
-│   ├── config/
-│   │   └── db.js                 # Database configuration
-│   ├── controllers/
-│   │   ├── authController.js     # Authentication logic
-│   │   └── bookController.js     # Book management logic
-│   ├── middleware/
-│   │   └── authMiddleware.js     # JWT authentication middleware
-│   ├── models/
-│   │   ├── Book.js               # Book schema
-│   │   └── User.js               # User schema
-│   ├── routes/
-│   │   ├── authRoutes.js         # Authentication endpoints
-│   │   └── bookRoutes.js         # Book management endpoints
-│   ├── package.json
-│   └── server.js                 # Main server file
+│  Project Structure
+
+```
+
+book-library-app/
+├── backend/
+│ ├── config/
+│ │ └── db.js # MongoDB connection configuration
+│ ├── controllers/
+│ │ ├── authController.js # Auth logic (register, login)
+│ │ └── bookController.js # Book CRUD operations
+│ ├── middleware/
+│ │ └── authMiddleware.js # JWT verification middleware
+│ ├── models/
+│ │ ├── Book.js # Mongoose Book schema
+│ │ └── User.js # Mongoose User schema
+│ ├── routes/
+│ │ ├── authRoutes.js # Auth endpoints
+│ │ └── bookRoutes.js # Book management endpoints
+│ ├── .env # Environment variables (not in repo)
+│ ├── package.json
+│ └── server.js # Express server entry point
 │
 ├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── BookForm.js       # Form for adding/editing books
-│   │   │   └── BookList.js       # Display list of books
-│   │   ├── pages/
-│   │   │   ├── Books.js          # Books page
-│   │   │   ├── Login.js          # Login page
-│   │   │   └── Register.js       # Registration page
-│   │   ├── context/
-│   │   │   └── AuthContext.js    # Authentication context
-│   │   ├── api/
-│   │   │   └── axios.js          # Axios configuration
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   ├── index.js
-│   │   └── index.css
-│   ├── package.json
-│   └── README.md
+│ ├── public/
+│ │ ├── index.html
+│ │ ├── manifest.json
+│ │ └── robots.txt
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── BookForm.js # Book creation/edit form
+│ │ │ └── BookList.js # Displays user's books
+│ │ ├── pages/
+│ │ │ ├── Books.js # Books management page
+│ │ │ ├── Login.js # User login page
+│ │ │ └── Register.js # User registration page
+│ │ ├── context/
+│ │ │ └── AuthContext.js # Global auth state management
+│ │ ├── api/
+│ │ │ └── axios.js # Axios instance configuration
+│ │ ├── App.js # Main application component
+│ │ ├── App.css # Application styles
+│ │ ├── index.js # React entry point
+│ │ └── index.css # Global styles
+│ ├── package.json
+│ └── README.md
 │
-└── README.md
+└── README.md # Project documentationpoints
+
+### Authentication Routes
+
+- `API Endpoints
+
+### Authentication Endpoints
+
+| Method | Endpoint             | Description                             |
+| ------ | -------------------- | --------------------------------------- |
+| POST   | `/api/auth/register` | Register a new user account             |
+| POST   | `/api/auth/login`    | Authenticate user and receive JWT token |
+
+### Book Management Endpoints
+
+| Method | Endpoint         | Description                               | Auth Required |
+| ------ | ---------------- | ----------------------------------------- | ------------- |
+| GET    | `/api/books`     | Retrieve all books for authenticated user | Yes           |
+| POST   | `/api/books`     | Create a new book entry                   | Yes           |
+| PUT    | `/api/books/:id` | Update an existing book                   | Yes           |
+
+| DGetting Started
+
+1. Complete the installation steps above
+2. Verify MongoDB Atlas connection string in `.env`
+3. Start the backend server from the `backend` directory: `npm run dev`
+4. Start the frontend development server from the `frontend` directory: `npm start`
+5. Open your browser to `http://localhost:3000`
+6. Create a new account or use test credentials to log in
+
+---
+
+## Building for Production
+
+### Frontend Deployment (GitHub Pages)
+
+From the frontend directory:
+
+```bash
+npm run build      # Create optimized production build
+npm run deploy     # Deploy to GitHub Pages
+```
+
+The frontend is configured to deploy to: `https://Supriya5645.github.io/book-library-app`
+
+### Backend Deployment
+
+Deploy the backend to a Node.js hosting service (e.g., Render, Heroku, Railway):
+
+1. Push code to the `book_app` branch on GitHub
+2. Connect your hosting provider to the repository
+3. Set environment variables (`MONGO_URI`, `JWT_SECRET`, `PORT`)
+4. Deploy and update frontend's API endpoint configuration
+
+---
+
+## Testing
+
+### Run Backend Tests
+
+```bash
+cd backend
+npm test
+```
+
+### Run Frontend Tests
+
+```bash
+cd frontend
+npm test
 ```
 
 ---
 
-## 🔌 API Endpoints
+## Troubleshooting
 
-### Authentication Routes
-
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Log in an existing user
-
-### Book Routes
-
-- `GET /api/books` - Get all books for the authenticated user
-- `POST /api/books` - Create a new book
-- `PUT /api/books/:id` - Update a book
-- `DELETE /api/books/:id` - Delete a book
+| Issue                             | Solution                                                                                 |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| Backend won't start               | Verify MongoDB Atlas connection in `.env`, check port 5000 is free                       |
+| Frontend can't connect to backend | Ensure backend is running, check API endpoint in `src/api/axios.js`, verify CORS enabled |
+| npm install fails                 | Delete `node_modules` and `package-lock.json`, run `npm install` again                   |
+| Build fails                       | Clear browser cache, check Node.js version (v14+), run `npm cache clean --force`         |
 
 ---
 
-## 🚀 Getting Started
+## Test Credentials
 
-1. Follow the installation steps above
-2. Ensure MongoDB is running (if using locally)
-3. Start the backend server
-4. Start the frontend server in a new terminal
-5. Open your browser and navigate to `http://localhost:3000`
-6. Register a new account or log in to get started
+For testing the application without creating a new account:
+
+- **Email:** supriyasupriya5645@gmail.com
+- **Password:** 123456
 
 ---
 
-## 🐛 Troubleshooting
+## License
 
-**Backend won't start:**
+This project is open source and available under the MIT License.
 
-- Ensure MongoDB is running
-- Check that port 5000 is not in use
-- Verify your `.env` file configuration
+---
 
-**Frontend won't connect to backend:**
+## Author
 
-- Ensure the backend is running on the correct port
+**Supriya** - [GitHub Profile](https://github.com/supriya5645)
+
+For questions, feedback, or to report issues, please open an issue on the [GitHub repository](https://github.com/supriya5645/book-library-app).
+
+---
+
+## Security Notes
+
+- Never commit `.env` file to version control
+- Always use strong JWT secrets in production
+- Keep all dependencies updated regularly
+- Use HTTPS in production environments
+- Validate all user inputs on both frontend and backend
+
+4. Deploy and update frontend's API endpoint configuration
+
+---
+
+## Testing
+
+### Run Backend Tests
+
+```bash
+cd backend
+npm test
+```
+
+### Run Frontend Tests
+
+```bash
+cd frontend
+npm test
+```
+
+---
+
+## Troubleshooting
+
+| Issue                             | Solution                                                                                 |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| Backend won't start               | Verify MongoDB Atlas connection in `.env`, check port 5000 is free                       |
+| Frontend can't connect to backend | Ensure backend is running, check API endpoint in `src/api/axios.js`, verify CORS enabled |
+| npm install fails                 | Delete `node_modules` and `package-lock.json`, run `npm install` again                   |
+| Build fails                       | Clear browser cache, check Node.js version (v14+), run `npm cache clean --force`         |
+
+---
+
+## Test Credentials
+
+For testing the application without creating a new account:
+
+- **Email:** supriyasupriya5645@gmail.com
+- **Password:** 123456ct port
 - Check the API endpoint configuration in `src/api/axios.js`
 - Look at browser console for error messages
 
@@ -216,6 +343,6 @@ This project is open source and available under the MIT License.
 
 ## 👤 Author
 
-[Your Name]
+Supriya
 
 For questions or suggestions, feel free to reach out or open an issue on the repository.
